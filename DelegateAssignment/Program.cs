@@ -47,7 +47,7 @@ public class Program
                     RemoveUser();
                     break;
                 case "5":
-                    //ShowUsers();
+                    ShowUsers();
                     break;
                 case "6":
                     start = false;
@@ -71,7 +71,7 @@ public class Program
         Console.WriteLine("Sorted list of students in ascending order:\n");
         foreach (var student in students)
         {
-            Console.WriteLine($"ID: {student.Id}, Name: {student.Name}, Age: {student.Age}, Score: {student.Score}");
+            Console.WriteLine($"Id: {student.Id}, Name: {student.Name}, Age: {student.Age}, Score: {student.Score}");
             //Console.WriteLine();
         }
 
@@ -80,7 +80,7 @@ public class Program
     public static void AddUser() {
         var user = new User();
 
-        Console.Write("Enter following details of User:");
+        Console.Write("Enter following details of User:\n");
         Console.Write("Name: ");
         user.Name = Console.ReadLine();
         Console.Write("Email: ");
@@ -101,6 +101,21 @@ public class Program
         _userService.RemoveUser(id);
         Console.WriteLine("User removed successfully");
 
+    }
+
+    public static void ShowUsers() {
+    
+        if(_userService.ShowUsers().Any() != false)
+        {
+            foreach(var user in _userService.ShowUsers())
+            {
+                Console.WriteLine($"Id: {user.Id}, Name: {user.Name}, Email: {user.Email}, Contact: {user.Contact}");
+            }
+        }
+        else
+        {
+            Console.WriteLine("No users added yet!!!");
+        }
     }
 
 }
