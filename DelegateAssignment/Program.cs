@@ -42,7 +42,7 @@ public class Program
                     //RemoveUser();
                     break;
                 case "5":
-                    //ShowUser();
+                    //ShowUsers();
                     break;
                 case "6":
                     start = false;
