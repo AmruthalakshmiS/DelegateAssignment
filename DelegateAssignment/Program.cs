@@ -16,7 +16,7 @@ public class Program
         new Student { Id = 102, Name = "Riya", Age = 16, Score = 78.5 }
     };
 
-    private static readonly UserService userService = new();
+    private static readonly UserService _userService = new();
 
     public static void Main(string[] args)
     {
@@ -88,7 +88,7 @@ public class Program
         Console.Write("Contact: ");
         user.Contact = Console.ReadLine();
 
-        userService.AddUser(user);
+        _userService.AddUser(user);
 
         Console.WriteLine("User added successfully.");
 
@@ -98,7 +98,7 @@ public class Program
         Console.WriteLine("Enter user id to be removed:");
         int id = int.Parse(Console.ReadLine());
 
-        userService.RemoveUser(id);
+        _userService.RemoveUser(id);
         Console.WriteLine("User removed successfully");
 
     }
