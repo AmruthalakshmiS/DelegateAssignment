@@ -2,10 +2,12 @@
 //Console.WriteLine("Hello, World!");
 using DelegateAssignment;
 using DelegateAssignment.Models;
+using DelegateAssignment.Services;
 
 
 public class Program
 {
+
     private static readonly List<Student> _students = new()
     {
         new Student { Id = 100, Name = "Ram", Age = 15, Score = 99 },
@@ -13,6 +15,9 @@ public class Program
         new Student { Id = 101, Name = "Rahul", Age = 15, Score = 99.9 },
         new Student { Id = 102, Name = "Riya", Age = 16, Score = 78.5 }
     };
+
+    private static readonly UserService userService = new();
+
     public static void Main(string[] args)
     {
         bool start = true;
@@ -33,13 +38,13 @@ public class Program
                        SortStudents();
                         break;
                 case "2":
-                    //AddUser();
+                    AddUser();
                     break;
                 case "3":
                     //UpdateUser();
                     break;
                 case "4":
-                    //RemoveUser();
+                    RemoveUser();
                     break;
                 case "5":
                     //ShowUsers();
@@ -71,4 +76,31 @@ public class Program
         }
 
     }
+
+    public static void AddUser() {
+        var user = new User();
+
+        Console.Write("Enter following details of User:");
+        Console.Write("Name: ");
+        user.Name = Console.ReadLine();
+        Console.Write("Email: ");
+        user.Email = Console.ReadLine();
+        Console.Write("Contact: ");
+        user.Contact = Console.ReadLine();
+
+        userService.AddUser(user);
+
+        Console.WriteLine("User added successfully.");
+
+    }
+
+    public static void RemoveUser() {
+        Console.WriteLine("Enter user id to be removed:");
+        int id = int.Parse(Console.ReadLine());
+
+        userService.RemoveUser(id);
+        Console.WriteLine("User removed successfully");
+
+    }
+
 }

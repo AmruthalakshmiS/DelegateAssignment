@@ -11,15 +11,15 @@ namespace DelegateAssignment
     {
         private static int _lastId = 0;
         public int Id { get; private set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Contact { get; set; }
+        public string? Name { get; set; }
+        public string? Email { get; set; }
+        public string? Contact { get; set; }
 
-        public User(string name, string email, string contact){
+        public User(){
             this.Id = ++_lastId;
-            this.Name = name;
-            this.Email = email;
-            this.Contact = contact;
+            //this.Name = name;
+            //this.Email = email;
+            //this.Contact = contact;
          }
 
     }
