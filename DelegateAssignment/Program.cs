@@ -41,7 +41,7 @@ public class Program
                     AddUser();
                     break;
                 case "3":
-                    //UpdateUser();
+                    UpdateUser();
                     break;
                 case "4":
                     RemoveUser();
@@ -115,6 +115,62 @@ public class Program
         else
         {
             Console.WriteLine("No users added yet!!!");
+        }
+    }
+
+    public static void UpdateUser()
+    {
+        //var user1 = new User();
+
+        Console.WriteLine("Enter user id to be updated:");
+        int id = int.Parse(Console.ReadLine());
+
+        var user1 = _userService.GetUserById(id);
+        if(user1 != null)
+        {
+            var updatedUser = new User()
+            { Id = id };
+
+            Console.WriteLine("Which property do you like to update?");
+            Console.WriteLine("1. Name");
+            Console.WriteLine("2. Email");
+            Console.WriteLine("3. Contact");
+            Console.WriteLine("4. No more updation");
+
+            bool update = true;
+            while (update)
+            {
+                Console.Write("Enter your choice: ");
+                string choice = Console.ReadLine();
+                switch (choice)
+                {
+                    case "1":
+                        Console.Write("Enter new Name: ");
+                        updatedUser.Name = Console.ReadLine();
+                        break;
+                    case "2":
+                        Console.Write("Enter new Email: ");
+                        updatedUser.Email = Console.ReadLine();
+                        break;
+                    case "3":
+                        Console.Write("Enter new Contact: ");
+                        updatedUser.Contact = Console.ReadLine();
+                        break;
+                    case "4":
+                        update = false;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice, try again.");
+                        break;
+                }
+            }
+            _userService.UpdateUser(updatedUser);
+            Console.WriteLine("User updated successfully.");
+
+        }
+        else
+        {
+            Console.WriteLine("No such user existing");
         }
     }
 

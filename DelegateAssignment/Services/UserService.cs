@@ -29,5 +29,11 @@ namespace DelegateAssignment.Services
         {
             return _userRepository.ShowUsers();
         }
+
+        public User GetUserById(int id)
+        {
+            return _userRepository.GetUserById(id);
+        }
+
     }
 }

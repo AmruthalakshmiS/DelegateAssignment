@@ -40,5 +40,10 @@ namespace DelegateAssignment
             return _users.AsReadOnly();
         }
 
+        public User GetUserById(int id)
+        {
+            return _users.Find(u => u.Id == id);
+        }
+
     }
 }

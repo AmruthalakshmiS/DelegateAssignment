@@ -10,7 +10,7 @@ namespace DelegateAssignment
     public class User
     {
         private static int _lastId = 0;
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public string? Name { get; set; }
         public string? Email { get; set; }
         public string? Contact { get; set; }
