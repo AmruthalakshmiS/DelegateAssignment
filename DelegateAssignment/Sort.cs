@@ -26,27 +26,27 @@ namespace DelegateAssignment
             QuickSortInternal(array, partition + 1, right, comparison);
         }
 
-        private static int PartitionInternal<T>(T[] list, int left, int right, Comparison<T> comparison) 
+        private static int PartitionInternal<T>(T[] array, int left, int right, Comparison<T> comparison) 
         {
-            T partition = list[right];
+            T partition = array[right];
 
             // stack items smaller than partition from left to right
             int swapIndex = left;
             for (int i = left; i < right; i++)
             {
-                T item = list[i];
+                T item = array[i];
                 if (comparison(item,partition) <= 0)
                 {
-                    list[i] = list[swapIndex];
-                    list[swapIndex] = item;
+                    array[i] = array[swapIndex];
+                    array[swapIndex] = item;
 
                     swapIndex++;
                 }
             }
 
             // put the partition after all the smaller items
-            list[right] = list[swapIndex];
-            list[swapIndex] = partition;
+            array[right] = array[swapIndex];
+            array[swapIndex] = partition;
 
             return swapIndex;
         }
