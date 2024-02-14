@@ -15,7 +15,7 @@ namespace DelegateAssignment
         public void AddUser(User user)
         { 
             _users.Add(user);
-            OnChange?.Invoke(this, new ChangedEvents(user, "User Added"));
+            OnChange?.Invoke(this, new ChangedEvents(user, "User Added")); //raising OnChange event
         }
 
         public void UpdateUser(User updatedUser)

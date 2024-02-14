@@ -19,9 +19,10 @@ namespace DelegateAssignment.Services
             EmailService emailService = new();
             PushService pushService = new();
 
+            //constructor subscrbing to _userRepository.OnChange event
             _userRepository.OnChange += (sender, e) =>
             {
-                string message = $"{e.Action} notification => {e.User.Id}, {e.User.Name}\n";
+                string message = $"{e.Action} notification - {e.User.Id}: {e.User.Name}\n";
                 smsService.Notify(message);
                 emailService.Notify(message);
                 pushService.Notify(message);
