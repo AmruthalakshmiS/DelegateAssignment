@@ -9,10 +9,25 @@ namespace DelegateAssignment
     public class UserRepository
     {
         private readonly List<User> _users = new();
+        public event EventHandler<ChangedEventArgs> OnChange;
+
+
+        public class ChangedEventArgs : EventArgs
+        {
+            public User User { get; }
+            public string Operation { get; }
+
+            public ChangedEventArgs(User user, string operation)
+            {
+                User = user;
+                Operation = operation;
+            }
+        }
 
         public void AddUser(User user)
         { 
             _users.Add(user);
+            OnChange?.Invoke(this, new ChangedEventArgs(user, "User Added"));
         }
 
         public void UpdateUser(User updatedUser)
@@ -24,6 +39,7 @@ namespace DelegateAssignment
                 user.Email = updatedUser.Email ?? user.Email;
                 user.Contact = updatedUser.Contact ?? user.Contact;
             }
+            OnChange?.Invoke(this, new ChangedEventArgs(user, "User Updated"));
         }
 
         public void RemoveUser(int id)
@@ -33,6 +49,7 @@ namespace DelegateAssignment
             {
                 _users.Remove(user);
             }
+            OnChange?.Invoke(this, new ChangedEventArgs(user, "User Removed"));
         }
 
         public IEnumerable<User> ShowUsers()
