@@ -66,9 +66,9 @@ public class Program
     public static void SortStudents()
     {
         var students = _students.ToArray();
-        Sort.QuickSort(students, (x, y) => x.Score.CompareTo(y.Score));
+        Sort.QuickSort(students, (x, y) => x.Id.CompareTo(y.Id));
 
-        Console.WriteLine("Sorted list of students in ascending order:\n");
+        Console.WriteLine("Sorted list of students in ascending order of Id:\n");
         foreach (var student in students)
         {
             Console.WriteLine($"Id: {student.Id}, Name: {student.Name}, Age: {student.Age}, Score: {student.Score}");

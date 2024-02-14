@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace DelegateAssignment.Services
 {
-    public class Notification : INotificationService
+    public class NotificationService : INotificationService
     {
         public class SmsService
         {
             public void Notify(string message)
             {
-                Console.WriteLine($"SMS notification, {message}");
+                Console.WriteLine($"SMS: {message}");
             }
         }
 
@@ -20,7 +20,7 @@ namespace DelegateAssignment.Services
         {
             public void Notify(string message) 
             {
-                Console.WriteLine($"Email notification, {message}");
+                Console.WriteLine($"Email: {message}");
             }
         }
 
@@ -28,7 +28,7 @@ namespace DelegateAssignment.Services
         {
             public void Notify(string message)
             {
-                Console.WriteLine($"Email notification, {message}");
+                Console.WriteLine($"Push: {message}");
             }
         }
 

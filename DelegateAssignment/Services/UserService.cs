@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static DelegateAssignment.Services.Notification;
+using static DelegateAssignment.Services.NotificationService;
 
 namespace DelegateAssignment.Services
 {
@@ -21,7 +21,7 @@ namespace DelegateAssignment.Services
 
             _userRepository.OnChange += (sender, e) =>
             {
-                string message = $"{e.Action} - {e.User.Id}: {e.User.Name}";
+                string message = $"{e.Action} notification => {e.User.Id}, {e.User.Name}\n";
                 smsService.Notify(message);
                 emailService.Notify(message);
                 pushService.Notify(message);
