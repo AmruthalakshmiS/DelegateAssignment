@@ -8,7 +8,7 @@ namespace DelegateAssignment.Services
 {
     public class INotificationService
     {
-        void Notification(string message)
+        static void Notification(string message)
         {
             Console.WriteLine(message);
         }
