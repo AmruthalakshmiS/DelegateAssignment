@@ -15,12 +15,12 @@ namespace DelegateAssignment
         public class ChangedEventArgs : EventArgs
         {
             public User User { get; }
-            public string Operation { get; }
+            public string Action { get; }
 
-            public ChangedEventArgs(User user, string operation)
+            public ChangedEventArgs(User user, string action)
             {
                 User = user;
-                Operation = operation;
+                Action = action;
             }
         }
 
